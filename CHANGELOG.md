@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+* **record:** avoid perpetual srv drift ([#8](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/issues/8)) ([ae225fd](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/commit/ae225fd9264c74ab268dcea1d255bcca20cb5deb))
+
+## [1.0.7](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.6...v1.0.7) (2026-10-13)
+
+### Bug Fixes
+
 * **record:** avoid perpetual SRV updates with Cloudflare provider v5
 
 ## [1.0.6](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.5...v1.0.6) (2026-10-02)
