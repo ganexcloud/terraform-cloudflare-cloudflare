@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.0.7](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.6...v1.0.7) (2026-10-13)
 
 ### Bug Fixes
 
