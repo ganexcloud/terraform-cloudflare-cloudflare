@@ -44,15 +44,18 @@ resource "cloudflare_dns_record" "srv" {
     port     = each.value.data_port
     priority = each.value.data_priority
     proto    = each.value.data_proto
-    service  = each.value.data_service
-    target   = each.value.data_target
-    weight   = each.value.data_weight
+    # Cloudflare derives the service from the SRV owner name and reads it back
+    # as empty. Sending it causes a perpetual update with provider v5.
+    service = null
+    target  = each.value.data_target
+    weight  = each.value.data_weight
   }
-  name    = var.zone_name == null ? format("%s.%s", each.value.data_service, each.value.data_proto) : format("%s.%s.%s", each.value.data_service, each.value.data_proto, var.zone_name)
-  comment = try(each.value.comment, null)
-  proxied = false
-  tags    = try(tolist(each.value.tags), split(",", each.value.tags), null)
-  ttl     = try(each.value.ttl, 1)
-  type    = "SRV"
-  zone_id = var.zone_id
+  name     = var.zone_name == null ? format("%s.%s", each.value.data_service, each.value.data_proto) : format("%s.%s.%s", each.value.data_service, each.value.data_proto, var.zone_name)
+  comment  = try(each.value.comment, null)
+  priority = try(each.value.priority, each.value.data_priority, null)
+  proxied  = false
+  tags     = try(tolist(each.value.tags), split(",", each.value.tags), null)
+  ttl      = try(each.value.ttl, 1)
+  type     = "SRV"
+  zone_id  = var.zone_id
 }

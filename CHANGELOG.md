@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Bug Fixes
+
+* **record:** avoid perpetual SRV updates with Cloudflare provider v5
+
 ## [1.0.6](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.5...v1.0.6) (2026-10-02)
 
 ### Bug Fixes

@@ -22,7 +22,7 @@ variable "records_caa" {
 }
 
 variable "records_srv" {
-  description = "SRV records. Optional keys include `comment` (string) and `tags` (list of strings, or a comma-separated string when records have mixed keys)."
+  description = "SRV records. `data_service` and `data_proto` compose the owner name; the provider derives `data.service`. Optional keys include `priority`, `comment` (string) and `tags` (list of strings, or a comma-separated string when records have mixed keys)."
   type        = list(any)
   default     = []
 }
