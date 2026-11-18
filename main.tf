@@ -23,6 +23,20 @@ module "record" {
   zone_name   = try(each.value.zone_name, null)
 }
 
+module "ssl" {
+  for_each = var.certificate_packs
+
+  source = "./modules/ssl"
+
+  zone_id               = each.value.zone_id
+  type                  = each.value.type
+  hosts                 = each.value.hosts
+  validation_method     = each.value.validation_method
+  validity_days         = each.value.validity_days
+  certificate_authority = each.value.certificate_authority
+  cloudflare_branding   = each.value.cloudflare_branding
+}
+
 module "rulesets" {
   for_each = var.rulesets
 

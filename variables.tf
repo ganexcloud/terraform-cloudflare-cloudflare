@@ -18,6 +18,21 @@ variable "records" {
   default     = {}
 }
 
+variable "certificate_packs" {
+  description = "Advanced certificate pack configurations keyed by logical name."
+  type = map(object({
+    zone_id               = string
+    hosts                 = set(string)
+    validation_method     = string
+    validity_days         = number
+    certificate_authority = string
+    type                  = optional(string, "advanced")
+    cloudflare_branding   = optional(bool)
+  }))
+  default  = {}
+  nullable = false
+}
+
 variable "rulesets" {
   description = "Map of Ruleset module configurations keyed by logical name."
   type        = map(any)

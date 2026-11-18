@@ -14,10 +14,15 @@ Legacy consumers migrate to public submodules, preserving their module label. Ev
 
 - `//modules/zone`
 - `//modules/record`
+- `//modules/ssl`
 - `//modules/firewall/modules/rulesets`
 - `//modules/firewall/modules/firewall`
 - `//modules/firewall/modules/ip-list`
 - `//modules/firewall/modules/page-rules`
+
+Use [the SSL submodule](modules/ssl/README.md) for a single advanced certificate pack or pass the
+optional `certificate_packs` map to the consolidated root module. See the
+[complete example](examples/complete) for root usage.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -40,6 +45,7 @@ No providers.
 | <a name="module_page_rules"></a> [page\_rules](#module\_page\_rules) | ./modules/firewall/modules/page-rules | n/a |
 | <a name="module_record"></a> [record](#module\_record) | ./modules/record | n/a |
 | <a name="module_rulesets"></a> [rulesets](#module\_rulesets) | ./modules/firewall/modules/rulesets | n/a |
+| <a name="module_ssl"></a> [ssl](#module\_ssl) | ./modules/ssl | n/a |
 | <a name="module_zone"></a> [zone](#module\_zone) | ./modules/zone | n/a |
 
 ## Resources
@@ -50,6 +56,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_certificate_packs"></a> [certificate\_packs](#input\_certificate\_packs) | Advanced certificate pack configurations keyed by logical name. | <pre>map(object({<br/>    zone_id               = string<br/>    hosts                 = set(string)<br/>    validation_method     = string<br/>    validity_days         = number<br/>    certificate_authority = string<br/>    type                  = optional(string, "advanced")<br/>    cloudflare_branding   = optional(bool)<br/>  }))</pre> | `{}` | no |
 | <a name="input_firewall_rules"></a> [firewall\_rules](#input\_firewall\_rules) | Map of legacy firewall rule module configurations keyed by logical name. | `map(any)` | `{}` | no |
 | <a name="input_ip_lists"></a> [ip\_lists](#input\_ip\_lists) | Map of account IP list module configurations keyed by logical name. | `map(any)` | `{}` | no |
 | <a name="input_page_rules"></a> [page\_rules](#input\_page\_rules) | Map of page rule module configurations keyed by logical name. | `map(any)` | `{}` | no |
@@ -61,6 +68,7 @@ No resources.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_certificate_packs"></a> [certificate\_packs](#output\_certificate\_packs) | Advanced certificate pack IDs and statuses keyed by logical name. |
 | <a name="output_firewall_rule_ids"></a> [firewall\_rule\_ids](#output\_firewall\_rule\_ids) | Legacy firewall rule IDs keyed by root input key. |
 | <a name="output_ip_lists"></a> [ip\_lists](#output\_ip\_lists) | IP list module outputs keyed by root input key. |
 | <a name="output_page_rule_targets_to_ids"></a> [page\_rule\_targets\_to\_ids](#output\_page\_rule\_targets\_to\_ids) | Page rule IDs keyed by root input key. |
