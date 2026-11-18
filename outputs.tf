@@ -8,6 +8,11 @@ output "records" {
   value       = module.record
 }
 
+output "certificate_packs" {
+  description = "Advanced certificate pack IDs and statuses keyed by logical name."
+  value       = module.ssl
+}
+
 output "rulesets" {
   description = "Ruleset module outputs keyed by root input key."
   value       = module.rulesets

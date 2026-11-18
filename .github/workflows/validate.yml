@@ -28,8 +28,9 @@ jobs:
       - name: Validate public entrypoints
         run: |
           terraform fmt -check -recursive
-          for directory in . modules/zone modules/record modules/firewall/modules/rulesets modules/firewall/modules/firewall modules/firewall/modules/ip-list modules/firewall/modules/page-rules; do
+          for directory in . modules/zone modules/record modules/ssl modules/firewall/modules/rulesets modules/firewall/modules/firewall modules/firewall/modules/ip-list modules/firewall/modules/page-rules examples/ssl examples/complete; do
             terraform -chdir="$directory" init -backend=false
             terraform -chdir="$directory" validate
           done
+          terraform test
           pre-commit run --all-files
