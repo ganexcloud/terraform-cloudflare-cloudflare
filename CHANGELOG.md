@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.7...v1.1.0) (2026-11-18)
+
+### Features
+
+* **ssl:** add advanced certificate packs ([#9](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/issues/9)) ([d8e2f2f](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/commit/d8e2f2fb70fc7c8689e97e7de7c550b17610ceb6))
+
 ## [1.0.7](https://github.com/ganexcloud/terraform-cloudflare-cloudflare/compare/v1.0.6...v1.0.7) (2026-10-13)
 
 ### Bug Fixes
